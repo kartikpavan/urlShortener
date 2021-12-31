@@ -27,7 +27,9 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/shortUrl", async (req, res) => {
-  await ShortUrl.create({ full: req.body.fullUrl });
+  // await ShortUrl.create({ full: req.body.fullUrl });
+  const p = new ShortUrl({ full: req.body.fullUrl });
+  await p.save();
   res.redirect("/");
 });
 
